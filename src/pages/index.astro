@@ -1,11 +1,226 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const experience = [
+  {
+    company: "Bina Nusantara IT Division",
+    roles: [
+      {
+        role: "Junior Software Engineer",
+        duration: "Mar 2024 - Feb 2026",
+        description: [
+          "Maintained and enhanced 15+ legacy full-stack web and mobile applications built with ASP.NET, React, CodeIgniter, Swift, React Native, and MS SQL by implementing new features and resolving production issues.",
+          "Delivered a training session to 7+ developers on Swift fundamentals and Xcode basics as part of project handover.",
+        ],
+        tech: [
+          "ASP.NET",
+          "React",
+          "CodeIgniter",
+          "Swift",
+          "React Native",
+          "MS SQL",
+        ],
+      },
+      {
+        role: "Associate Developer",
+        duration: "Mar 2023 - Feb 2024",
+        description: [
+          "Developed the Student Achievement web application from scratch as part of a four-person team, establishing reusable project templates and architecture to maintain clean, consistent code for future development.",
+          "Created layout on Figma following company guidelines.",
+        ],
+        tech: ["ASP.NET", "React", "MS SQL"],
+      },
+    ],
+  },
+  {
+    company: "TB. Resik",
+    roles: [
+      {
+        role: "Web Developer",
+        duration: "Feb 2024 - Feb 2025",
+        description: [
+          "Developed an internal product catalog management progressive web application (PWA) using the MERN stack, enabling a micro building supply business to manage inventory digitally.",
+          "Digitized inventory records with a searchable and editable database, reducing product lookup and inventory update time by over 50% compared with handwritten notebooks.",
+        ],
+        tech: ["React", "Node", "Express", "MongoDB"],
+      },
+    ],
+  },
+];
+
+const techStack = [
+  "ASP.NET",
+  "React",
+  "JavaScript",
+  "TypeScript",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "MySQL",
+  "Git",
+  "Docker",
+];
+
+const education = [
+  {
+    institution: "Bina Nusantara University",
+    degree: "Bachelor of Computer Science",
+    duration: "2022 - 2026",
+    notes: [],
+  },
+  {
+    institution: "Hanyang University",
+    degree: "Visiting Student Program",
+    duration: "2025",
+    notes: [],
+  },
+];
+
+const contact = {
+  email: "andrwgarciaa@gmail.com",
+  github: "https://www.github.com/andrwgarciaa",
+  linkedin: "https://www.linkedin.com/in/andrwgarciaa",
+};
 ---
 
 <Layout>
-	<Welcome />
+  <main
+    class="flex flex-col items-center justify-start min-h-screen px-6 py-12"
+  >
+    <h1 class="text-[6vh] font-bold">ANDREW GARCIA</h1>
+
+    <section class="w-full mt-8">
+      <div class="w-full lg:max-w-6xl mx-auto lg:flex lg:items-center lg:gap-6">
+        <!-- Left: Experience (full width on mobile, flexible on desktop) -->
+        <div class="w-full lg:flex-1 flex justify-center">
+          <div class="w-full lg:max-w-4xl">
+            <h2 class="text-md font-semibold uppercase text-gray-500 mb-4">
+              Professional Experience
+            </h2>
+
+            <div class="space-y-6">
+              {
+                experience.map((company) => (
+                  <div class="mb-2">
+                    <h3 class="text-xl font-bold mb-2">{company.company}</h3>
+
+                    <div class="space-y-3">
+                      {company.roles.map((r) => (
+                        <article class="border border-gray-200 dark:border-gray-800 p-4 rounded-md">
+                          <div class="flex items-start justify-between">
+                            <div>
+                              <h4 class="text-lg font-semibold">{r.role}</h4>
+                            </div>
+                            <time class="text-sm text-gray-500 dark:text-gray-400">
+                              {r.duration}
+                            </time>
+                          </div>
+
+                          <ul class="mt-2 list-disc pl-5 space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                            {r.description.map((desc) => (
+                              <li>{desc}</li>
+                            ))}
+                          </ul>
+
+                          {r.tech ? (
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              {r.tech.map((tech) => (
+                                <span class="inline-flex items-center gap-1 rounded-full border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-2.5 py-1 text-xs font-medium text-gray-800 dark:text-gray-200">
+                                  <span>{tech}</span>
+                                </span>
+                              ))}
+                            </div>
+                          ) : null}
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Tech / Education / Contact column -->
+        <aside class="w-full lg:flex-1 mt-6 lg:mt-0 flex justify-center">
+          <div class="w-full lg:max-w-xs space-y-6">
+            <div>
+              <h2 class="text-md font-semibold uppercase text-gray-500 mb-4">
+                Tech Stack
+              </h2>
+              <div
+                class="border border-gray-200 dark:border-gray-800 p-4 rounded-md"
+              >
+                <ul
+                  class="grid grid-cols-2 gap-2 space-y-2 text-sm text-gray-800 dark:text-gray-200"
+                >
+                  {techStack.map((tech) => <li>{tech}</li>)}
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-md font-semibold uppercase text-gray-500 mb-4">
+                Education
+              </h2>
+              <div
+                class="border border-gray-200 dark:border-gray-800 p-4 rounded-md"
+              >
+                <ul class="space-y-3 text-sm text-gray-800 dark:text-gray-200">
+                  {
+                    education.map((edu) => (
+                      <li>
+                        <div class="font-medium">{edu.institution}</div>
+                        <div class="text-sm text-gray-500">
+                          {edu.degree} · {edu.duration}
+                        </div>
+                        <ul class="mt-2 list-disc pl-5 text-sm text-gray-700 dark:text-gray-300">
+                          {edu.notes.map((n) => (
+                            <li>{n}</li>
+                          ))}
+                        </ul>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-md font-semibold uppercase text-gray-500 mb-4">
+                Contact
+              </h2>
+              <div
+                class="border border-gray-200 dark:border-gray-800 p-4 rounded-md"
+              >
+                <ul class="space-y-2 text-sm text-gray-800 dark:text-gray-200">
+                  <li>
+                    <a
+                      class="text-indigo-600 dark:text-indigo-400"
+                      href={`mailto:${contact.email}`}>{contact.email}</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      class="text-indigo-600 dark:text-indigo-400"
+                      href={contact.github}>{contact.github}</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-indigo-600 dark:text-indigo-400"
+                      href={contact.linkedin}>{contact.linkedin}</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
 </Layout>
+
+<style></style>
